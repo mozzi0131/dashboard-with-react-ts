@@ -26,7 +26,7 @@ export default function ReturnModuleList() {
 
 	console.log("try to call manageData");
 	manageData();
-	console.log("call manageData - over")
+	console.log("call manageData - over");
 
 	// useEffect(() => {
 	// 	fetch(`${baseURL}/api/json`)

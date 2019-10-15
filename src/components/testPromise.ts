@@ -65,33 +65,42 @@ export function getDataList(module: string): Promise<TestResult> {
     });
 }
 
+function manageGraphData(dataList:TestResult[]){
+    //여기서 관리
+}
+
 /*
  * 1. api에서 data 받아와서 module list 긁어오기
  * 2. module list만큼 fetch 돌면서 data 받아오고 --> dictionary list push하기
- * 3. 해당 data 바탕으로 material-ui update하기
+ * 3. 해당 data 바탕으로 data list update하기 (기본 view가 있고..))
  */
-export function manageData(){
+export async function manageData(){
     const baseURL: string = "/job/Test_Automation/lastSuccessfulBuild";
     let moduleList:string[] = [];
     let testDict:TestResult[] = [];
 
-    console.log("call manageData!")
-
-	fetch(`${baseURL}/api/json`)
-		.then(response => response.json())
-		.then(jsonObj => jsonObj["artifacts"])
-		.then(result => {
-           return getModuleList(result);
-        })
-        .then(modules => {
-            modules.map(module => getDataList(module)
-                                  .then(result => {
-                                    testDict.push(result);
-                                    console.log("testDict is ", testDict);
-                                  })
-                        )
-        //data gathering 완료 : 이제 이거 바탕으로..? graph용 data 만들기
-        })
-        .then()
-		.catch(err => console.error());
+    await fetch(`${baseURL}/api/json`)
+	// .then(response => response.json())
+	// .then(jsonObj => jsonObj["artifacts"])
+	// .then(result => {
+    //       return getModuleList(result);
+    //    })
+    //    .then(modules => {
+    //        modules.map((module, idx, tempArr) => {
+    //            getDataList(module)
+    //             .then(result => {
+    //                 testDict.push(result);
+    //                 //문제의 코드
+    //                 if(tempArr.length -1 === idx){
+    //                     return testDict;
+    //                 }
+    //             })
+    //             /* 하고싶었던것.. 
+    //             .then(dict => {
+    //                 manageGraphData(dict);
+    //             })
+    //             */
+    //         })
+    //     })
+	// 	.catch(err => console.error());*/
 }
