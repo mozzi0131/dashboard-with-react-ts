@@ -3,17 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.4.3",
+    "@material-ui/icons": "^4.5.1",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.8",
     "@types/react": "16.9.3",
     "@types/react-dom": "16.9.1",
+    "@types/xml2js": "^0.4.5",
+    "material-table": "^1.52.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2",
     "typescript": "3.6.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4500 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -21,6 +25,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://10.186.117.236:8080",
   "browserslist": {
     "production": [
       ">0.2%",

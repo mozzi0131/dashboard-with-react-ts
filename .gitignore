@@ -1,5 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# 이 파일들은 뭐지.. dependencies?
+tsconfig.json
+package-lock.json
+package.json
+
 # dependencies
 /node_modules
 /.pnp
