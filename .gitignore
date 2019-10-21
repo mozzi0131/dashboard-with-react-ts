@@ -16,6 +16,9 @@ package.json
 # production
 /build
 
+#public dir
+/public
+
 # misc
 .DS_Store
 .env.local
