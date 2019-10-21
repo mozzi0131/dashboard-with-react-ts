@@ -198,7 +198,7 @@ function createCoverageData(module: string, coveredLine: string, lineRatio: stri
 }
 
 export async function SetColumnData() {
-    
+
     totalRows = [];
     unittestRows = [];
     coverageRows = [];
@@ -221,6 +221,4 @@ export async function SetColumnData() {
         unittestRows.push(createUnitTestData(moduleName, tempUTnum, tempFailure, tempErr));
         coverageRows.push(createCoverageData(moduleName, lineCover, lineRate, lineValid, branchCover, branchRate, branchValid));
     }
-
-    console.log("total/ut/coverage", totalRows, unittestRows, coverageRows);
 }

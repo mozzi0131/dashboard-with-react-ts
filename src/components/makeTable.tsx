@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 //이 함수의 columns, rows가 각각 (totalColumn, totalRows)/(unittestColumn, unittestRows)/(coverageColumn, coverageRows)로 props로 보내서 그릴 수 있는..? 방법이 있는지..?
-export default function DataTable({columns, rows}:any) {
+export default function DataTable({ columns, rows }: any) {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(2);
