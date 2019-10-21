@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -21,8 +21,8 @@ const useStyles = makeStyles({
 //이 함수의 columns, rows가 각각 (totalColumn, totalRows)/(unittestColumn, unittestRows)/(coverageColumn, coverageRows)로 props로 보내서 그릴 수 있는..? 방법이 있는지..?
 export default function DataTable({ columns, rows }: any) {
     const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(2);
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(2);
 
     const handleChangePage = (event: unknown, newPage: number) => {
         setPage(newPage);

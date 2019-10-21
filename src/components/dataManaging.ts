@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { TestResult, manageModulesData } from "./getData"
+import { manageModulesData } from "./getData"
 
 interface Column {
     label: string;
@@ -170,7 +169,7 @@ function returnPercentStr(value: string): string {
 }
 
 function returnPassRate(total: number, fail: number): string {
-    if (total != 0) {
+    if (total !== 0) {
         return (((total - fail) / total) * 100).toFixed(2).toString() + "%";
     }
     else {
