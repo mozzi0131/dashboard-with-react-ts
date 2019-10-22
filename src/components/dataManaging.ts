@@ -196,7 +196,7 @@ function createCoverageData(module: string, coveredLine: string, lineRatio: stri
     return { module, coveredLine, linePercentage, validLine, coveredBranch, branchPercentage, validBranch };
 }
 
-export async function SetColumnData() {
+export async function setColumnData() {
 
     totalRows = [];
     unittestRows = [];
