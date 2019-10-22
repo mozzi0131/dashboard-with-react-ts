@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import TestDataTable from './components/DataTable';
-import { totalCol, unittestCol, coverageCol, setColumnData, totalRows, unittestRows, coverageRows } from './components/dataManaging'
+import { totalCol, unittestCol, coverageCol, setColumnData, totalRows, unittestRows, coverageRows } from './components/manageTableData'
 
 const App: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);

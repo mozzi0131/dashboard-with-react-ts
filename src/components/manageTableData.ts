@@ -1,4 +1,4 @@
-import { manageModulesData } from "./getData"
+import { manageModulesData } from "./getJenkinsData"
 
 interface Column {
     label: string;
