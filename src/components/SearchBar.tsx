@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function BackupCustomizedInputBase() {
+export default function CustomizedInputBase() {
   const classes = useStyles();
 
   return (
