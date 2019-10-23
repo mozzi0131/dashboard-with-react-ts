@@ -5,7 +5,8 @@ interface Dictionary<T> {
 export interface TestResult {
     moduleName: string,
     gtest: Dictionary<string>,
-    coverage: Dictionary<string>
+    coverage: Dictionary<string>,
+    valgrind: Dictionary<string>
 }
 
 function getModuleList(moduleInfos: { fileName: string }[]): string[] {
@@ -14,7 +15,26 @@ function getModuleList(moduleInfos: { fileName: string }[]): string[] {
     return distinctModuleNames;
 }
 
-async function callArtifactsURL(module: string, data: 'coverage' | 'gtest'): Promise<Dictionary<string>> {
+/* 현재는 possibly lost같은? 세분화된 데이터는 가져올 필요가 없어서 따로 함수를 빼지는 않았지만
+ * 나중에 필요한 것 같으면 이렇게 함수를 따로 빼는 게 낫나?
+ */
+async function getValgrindInfo(module: string): Promise<Dictionary<string>> {
+    const baseURL = "/job/Test_Automation/lastSuccessfulBuild";
+    const artifactsURL = `${baseURL}/artifact`;
+
+    const response = await fetch(`${artifactsURL}/valgrind_${module}.xml`);
+    const text = await response.text();
+    const parser = new DOMParser();
+    const parsedDocument = parser.parseFromString(text, "text/xml");
+    const result: Dictionary<string> = {};
+            
+    const value = parsedDocument.documentElement.getElementsByTagName("error").length;
+    result["error"] = value.toString();
+
+    return result;
+}
+
+async function callArtifactsURL(module: string, data: 'coverage' | 'gtest' | 'valgrind'): Promise<Dictionary<string>> {
     const coverageKeys = [
         'lines-covered',
         'line-rate',
@@ -28,9 +48,13 @@ async function callArtifactsURL(module: string, data: 'coverage' | 'gtest'): Pro
         'failures',
         'errors',
     ];
+    const valgrindKeys = [
+        'error'
+    ]
     const keys = {
         'coverage': coverageKeys,
         'gtest': gtestKeys,
+        'valgrind': valgrindKeys
     };
 
     const baseURL = "/job/Test_Automation/lastSuccessfulBuild";
@@ -42,8 +66,14 @@ async function callArtifactsURL(module: string, data: 'coverage' | 'gtest'): Pro
     const parsedDocument = parser.parseFromString(text, "text/xml");
     const result: Dictionary<string> = {};
     for (const key of keys[data]) {
-        const value = parsedDocument.documentElement.getAttribute(key) || "";
-        result[key] = value;
+        if(data === 'valgrind'){
+            const value = parsedDocument.documentElement.getElementsByTagName(key).length;
+            result[key] = value.toString();
+        }
+        else{
+            const value = parsedDocument.documentElement.getAttribute(key) || "";
+            result[key] = value;
+        }
     }
     return result;
 }
@@ -60,9 +90,12 @@ async function getModuleData(module: string): Promise<TestResult> {
         );
         return result;
      */
-    const result = await Promise.all([callArtifactsURL(module, 'gtest'), callArtifactsURL(module, 'coverage')]);
+    const result = await Promise.all([callArtifactsURL(module, 'gtest'), 
+                                      callArtifactsURL(module, 'coverage'),
+                                      callArtifactsURL(module, 'valgrind')
+                                     ]);
 
-    return { moduleName: module, gtest: result[0], coverage: result[1] };
+    return { moduleName: module, gtest: result[0], coverage: result[1], valgrind:result[2] };
 }
 
 export async function manageModulesData(): Promise<TestResult[]> {

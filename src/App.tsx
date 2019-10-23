@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
 import TestDataTable from './components/DataTable';
-import { totalCol, unittestCol, coverageCol, setColumnData, totalRows, unittestRows, coverageRows } from './components/manageTableData'
+import SearchBar from "./components/SearchBar";
+import { totalCol, unittestCol, coverageCol, setColumnData, totalRows, unittestRows, coverageRows } from './typescripts/manageTableData'
 
 const App: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
@@ -20,12 +21,13 @@ const App: React.FC = () => {
             {loading === true &&
                 <div className="App">
                     <div id="mainbody">
-                        <h1 >Dashboard - Unit test report</h1>
-                        <h2 >Total Info</h2>
+                        <h1>Dashboard - Unit test report</h1>
+                        <SearchBar/>
+                        <h2>Total Info</h2>
                         <TestDataTable columns={totalCol} rows={totalRows} />
-                        <h2 >Unit Test</h2>
+                        <h2>Unit Test</h2>
                         <TestDataTable columns={unittestCol} rows={unittestRows} />
-                        <h2 >Code Coverage</h2>
+                        <h2>Code Coverage</h2>
                         <TestDataTable columns={coverageCol} rows={coverageRows} />
                     </div>
                 </div>

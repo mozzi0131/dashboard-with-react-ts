@@ -1,4 +1,4 @@
-import { manageModulesData } from "./getJenkinsData"
+import { manageModulesData } from "../typescripts/getJenkinsData"
 
 interface Column {
     label: string;
