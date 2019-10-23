@@ -4,6 +4,8 @@ import TestDataTable from './components/DataTable';
 import SearchBar from "./components/SearchBar";
 import { totalCol, unittestCol, coverageCol, setColumnData, totalRows, unittestRows, coverageRows } from './typescripts/manageTableData'
 
+import ProgressBar from "./components/ProgressBar"
+
 const App: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false);
 
@@ -17,12 +19,12 @@ const App: React.FC = () => {
 
     return (
         <div>
-            {loading === false && <div> now loading... </div>}
+            {loading === false && <div> <ProgressBar/> </div> }
             {loading === true &&
                 <div className="App">
                     <div id="mainbody">
                         <h1>Dashboard - Unit test report</h1>
-                        <SearchBar/>
+                        <SearchBar />
                         <h2>Total Info</h2>
                         <TestDataTable columns={totalCol} rows={totalRows} />
                         <h2>Unit Test</h2>
