@@ -68,9 +68,9 @@ export async function getTestResults(): Promise<TestResult[]> {
     '/job/Test_Automation/lastSuccessfulBuild/api/json'
   );
   const responseData = await response.json();
-  const artifacts: { filename: string }[] = responseData['artifacts'];
+  const artifacts: { fileName: string }[] = responseData['artifacts'];
   const moduleNames = artifacts.map(artifact => {
-    const match = artifact.filename.match(/.*_(.*)\..*/);
+    const match = artifact.fileName.match(/.*_(.*)\..*/);
     return match![1];
   });
   const distinctModuleNames = Array.from(new Set(moduleNames));
