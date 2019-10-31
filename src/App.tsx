@@ -210,7 +210,7 @@ const App: React.FC = () => {
 					<div className="App">
 						<div id="mainbody">
 							<h1>Dashboard - Unit test report</h1>
-							<SearchBar />
+							{/* <SearchBar /> */}
 							<h2>Total Info</h2>
 							<TestDataTable columns={totalCol} rows={testResults} />
 							<h2>Unit Test</h2>
