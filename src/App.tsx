@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import TestDataTable, { Column } from './components/DataTable';
-import SearchBar from './components/SearchBar';
 import ProgressBar from './components/ProgressBar';
 import { TestResult, getTestResults } from './utils/jenkins';
 
@@ -210,7 +209,6 @@ const App: React.FC = () => {
 					<div className="App">
 						<div id="mainbody">
 							<h1>Dashboard - Unit test report</h1>
-							{/* <SearchBar /> */}
 							<h2>Total Info</h2>
 							<TestDataTable columns={totalCol} rows={testResults} />
 							<h2>Unit Test</h2>
