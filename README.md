@@ -1,44 +1,46 @@
+# DashBoard with React and TypeScript
+
+Nginx, Docker를 이용하여 서비스하는 것을 목적으로 작성된 프로젝트입니다.
+
+## How to run the project
+
+ ```c
+ // for a development server
+ $ yarn
+ $ yarn start
+
+ // or
+ $ npm install
+ $ npm start
+ ```
+
+  ```c
+ // for a production server
+ $ yarn
+ $ yarn build
+
+ // or
+ $ npm install
+ $ npm build
+ ```
+
+ If you make sure that the image is successfully build, then serve the file as below.
+
+### Using Dockerfile (Using nginx)
+
+If you don't have docker-compose on your PC, please refer to [Docker Official Docs](https://docs.docker.com/compose/install/)
+
+ ```c
+ // if the image's name looks too long, please edit the docer-compose.yml
+ $ sudo docker-compose -f docker-compose.yml up -d --build
+ $ sudo docker run -it --rm -p 1337:80 dashboard-with-react-ts_dashboard-prod
+ ```
+
+## Remained TO-DO
+
+ 1. Timeout 등을 이용한 proxy error 해결
+ 2. Error 팝업 발생할 수 있도록 작업
+ 3. Module 검색 가능하도록 검색창 작업 및 개선]
+ 4. yarn으로 Dockerfile 변경
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).

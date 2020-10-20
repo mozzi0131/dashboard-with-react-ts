@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  dashboard-prod:
+    container_name: sample_prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '1337:80'

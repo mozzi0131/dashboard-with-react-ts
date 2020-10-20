@@ -20,7 +20,7 @@
     "react": "^16.9.0",
     "react-autosuggest": "^9.4.3",
     "react-dom": "^16.9.0",
-    "react-scripts": "3.1.2",
+    "react-scripts": "^3.4.3",
     "typescript": "3.6.3",
     "use-async-effect": "^2.2.1"
   },
